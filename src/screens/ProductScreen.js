@@ -12,7 +12,7 @@ import products from '../data/products';
 export default function ProductScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Our Products</Text>
+      <Text style={styles.title}>Our Shoes</Text>
 
       <FlatList
         data={products}
@@ -20,21 +20,15 @@ export default function ProductScreen() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <View style={styles.itemContainer}>
+          <View style={styles.product}>
             <Image
               source={{ uri: item.image }}
               style={styles.image}
               resizeMode="contain"
             />
 
-            <Text style={styles.name}>{item.name}</Text>
-
-            <Text style={styles.price}>
-              {item.price} €
-            </Text>
-
-            <Text style={styles.sizes}>
-              Sizes: {item.sizes.join(', ')}
+            <Text style={styles.name}>
+              {item.name}
             </Text>
           </View>
         )}
@@ -46,40 +40,40 @@ export default function ProductScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: 45,
+    backgroundColor: '#FFFFFF',
+    paddingTop: 50,
   },
+
   title: {
     fontSize: 26,
     fontWeight: 'bold',
-    marginHorizontal: 12,
-    marginBottom: 12,
+    marginHorizontal: 16,
+    marginBottom: 16,
   },
+
   list: {
+    paddingHorizontal: 8,
     paddingBottom: 20,
   },
-  itemContainer: {
+
+  product: {
     width: '50%',
     padding: 8,
+    alignItems: 'center',
   },
+
   image: {
     width: '100%',
     aspectRatio: 1,
-    backgroundColor: '#f5f5f5',
-    borderRadius: 8,
+    backgroundColor: '#F5F5F5',
+    borderRadius: 12,
   },
+
   name: {
     fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 8,
-  },
-  price: {
-    fontSize: 15,
-    marginTop: 4,
-  },
-  sizes: {
-    fontSize: 12,
-    color: '#666',
-    marginTop: 4,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 12,
   },
 });
