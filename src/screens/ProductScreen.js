@@ -12,7 +12,7 @@ import products from '../data/products';
 export default function ProductScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Our Products</Text>
+      <Text style={styles.title}>Welcome our Products</Text>
 
       <FlatList
         data={products}
