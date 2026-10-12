@@ -12,23 +12,29 @@ import products from '../data/products';
 export default function ProductScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome our Products</Text>
+      <Text style={styles.title}>Our Products</Text>
 
       <FlatList
         data={products}
         numColumns={2}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.list}
         renderItem={({ item }) => (
           <View style={styles.itemContainer}>
             <Image
               source={{ uri: item.image }}
               style={styles.image}
+              resizeMode="contain"
             />
 
             <Text style={styles.name}>{item.name}</Text>
 
             <Text style={styles.price}>
               {item.price} €
+            </Text>
+
+            <Text style={styles.sizes}>
+              Sizes: {item.sizes.join(', ')}
             </Text>
           </View>
         )}
@@ -41,13 +47,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingTop: 40,
+    paddingTop: 45,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     marginHorizontal: 12,
     marginBottom: 12,
+  },
+  list: {
+    paddingBottom: 20,
   },
   itemContainer: {
     width: '50%',
@@ -56,6 +65,8 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     aspectRatio: 1,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 8,
   },
   name: {
     fontSize: 16,
@@ -63,8 +74,12 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   price: {
-    fontSize: 14,
-    color: 'gray',
+    fontSize: 15,
+    marginTop: 4,
+  },
+  sizes: {
+    fontSize: 12,
+    color: '#666',
     marginTop: 4,
   },
 });
